@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <meta name="theme-color" content="#10252b" />
+    <link rel="icon" href="data:," />
+    <meta name="description" content="用手机浏览器测试连续扫描二维码的速度。视频与识别结果只在本机处理。" />
+    <title>连续扫码测速</title>
+    <script type="module" crossorigin src="./assets/index-Bh-gqWmA.js"></script>
+    <link rel="stylesheet" crossorigin href="./assets/index-DlDGfpEf.css">
+  </head>
+  <body>
+    <main class="app">
+      <header class="masthead">
+        <div class="brand"><span class="brand-mark" aria-hidden="true"></span><span>扫码测速实验室</span></div>
+        <span class="local-tag">仅在本机处理</span>
+      </header>
+
+      <section class="intro" aria-labelledby="page-title">
+        <p class="eyebrow">QR CODE · CONTINUOUS SCAN</p>
+        <h1 id="page-title">连续扫码，实际测一下。</h1>
+        <p>用手机后置摄像头逐个扫描不同二维码，查看识别数量、用时与平均间隔。页面不会上传画面或扫码内容。</p>
+      </section>
+
+      <section class="workspace" aria-label="扫码测速">
+        <div class="camera-card">
+          <div class="card-heading"><div><span class="section-index">01 / CAMERA</span><h2>摄像头</h2></div><span id="camera-state" class="state-pill" data-state="idle">未启动</span></div>
+          <div class="camera-frame" id="camera-frame">
+            <video id="preview" autoplay muted playsinline aria-label="摄像头画面"></video>
+            <div class="finder" aria-hidden="true"><span></span><span></span><span></span><span></span></div>
+            <div class="camera-placeholder" id="camera-placeholder">
+              <div class="placeholder-icon" aria-hidden="true"><i></i><i></i><i></i><i></i></div>
+              <strong>准备开始扫描</strong>
+              <span>点击下方按钮并允许使用摄像头</span>
+            </div>
+            <div class="scan-flash" id="scan-flash" aria-hidden="true"></div>
+          </div>
+          <p class="camera-hint" id="camera-hint" role="status" aria-live="polite">请在手机上打开，并准备一组不同的二维码。</p>
+          <div class="camera-actions">
+            <button id="start-button" class="button button-primary" type="button">开始扫码</button>
+            <button id="stop-button" class="button button-secondary" type="button" disabled>停止</button>
+            <button id="reset-button" class="button button-quiet" type="button">清空记录</button>
+          </div>
+        </div>
+
+        <div class="results-card">
+          <div class="card-heading"><div><span class="section-index">02 / RESULTS</span><h2>实时成绩</h2></div><span id="session-state" class="session-state">等待开始</span></div>
+          <div class="primary-stat"><div><span class="stat-label">有效识别</span><strong id="scan-count">0</strong><span class="stat-unit">个二维码</span></div><div class="rate"><strong id="scan-rate">0.0</strong><span>个 / 分钟</span></div></div>
+          <div class="stat-grid">
+            <div><span>累计用时</span><strong id="elapsed">00:00.0</strong></div>
+            <div><span>平均间隔</span><strong id="average-gap">待统计</strong></div>
+            <div><span>重复忽略</span><strong id="duplicate-count">0</strong></div>
+          </div>
+          <div class="list-heading"><div><h3>最近识别</h3><span>同一内容在本轮只计一次</span></div><button id="export-button" class="text-button" type="button" disabled>导出 CSV</button></div>
+          <ol id="scan-list" class="scan-list" aria-live="polite"><li class="empty">开始扫码后，识别记录会显示在这里。</li></ol>
+        </div>
+      </section>
+
+      <section class="guide" aria-labelledby="guide-title">
+        <div><span class="section-index">03 / TEST METHOD</span><h2 id="guide-title">怎样测更准</h2></div>
+        <ol><li>用另一块屏幕展示，或打印<a href="./test-codes.html" target="_blank" rel="noopener">24 个测试二维码</a>。</li><li>手机点击“开始扫码”，允许摄像头访问，待画面出现后依次扫描。</li><li>扫完点击“停止”，记录用时和平均间隔；换手机时清空记录再测。</li></ol>
+      </section>
+      <footer>浏览器端测速 · 识别结果仅保留在当前页面内存中，关闭页面即清除</footer>
+    </main>
+  </body>
+</html>
